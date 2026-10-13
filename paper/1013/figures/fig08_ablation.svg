@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#183B56"/></marker>
+<marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2F6BFF"/></marker>
+<marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2FA36B"/></marker>
+<linearGradient id="bluegrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EAF1FF"/><stop offset="1" stop-color="#D9E8FF"/></linearGradient>
+<linearGradient id="heat" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#EDF2F7"/><stop offset="0.35" stop-color="#A9D7D0"/><stop offset="0.7" stop-color="#42A88F"/><stop offset="1" stop-color="#136C64"/></linearGradient>
+</defs>
+<rect width="1600" height="900" fill="white"/>
+<text x="800.0" y="54" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="34" font-weight="700" font-style="normal" text-anchor="middle">方法对比与关键模块消融</text>
+<text x="420" y="120" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">联合成功率 / %</text>
+<text x="200" y="210" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">直接PPO</text>
+<rect x="220" y="180" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
+<rect x="220" y="180" width="213.0" height="44" rx="10" fill="#D9544D" fill-opacity="1.0" stroke="#D9544D" stroke-width="0"/>
+<text x="445.0" y="211" fill="#D9544D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">42.6</text>
+<text x="200" y="300" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">无Teacher</text>
+<rect x="220" y="270" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
+<rect x="220" y="270" width="308.5" height="44" rx="10" fill="#F28E2B" fill-opacity="1.0" stroke="#F28E2B" stroke-width="0"/>
+<text x="540.5" y="301" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">61.7</text>
+<text x="200" y="390" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">纯行为克隆</text>
+<rect x="220" y="360" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
+<rect x="220" y="360" width="369.0" height="44" rx="10" fill="#8064C6" fill-opacity="1.0" stroke="#8064C6" stroke-width="0"/>
+<text x="601.0" y="391" fill="#8064C6" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">73.8</text>
+<text x="200" y="480" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">无DAgger</text>
+<rect x="220" y="450" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
+<rect x="220" y="450" width="390.5" height="44" rx="10" fill="#6F91C7" fill-opacity="1.0" stroke="#6F91C7" stroke-width="0"/>
+<text x="622.5" y="481" fill="#6F91C7" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">78.1</text>
+<text x="200" y="570" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">DAgger</text>
+<rect x="220" y="540" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
+<rect x="220" y="540" width="424.5" height="44" rx="10" fill="#27A7B8" fill-opacity="1.0" stroke="#27A7B8" stroke-width="0"/>
+<text x="656.5" y="571" fill="#27A7B8" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">84.9</text>
+<text x="200" y="660" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">完整方法</text>
+<rect x="220" y="630" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
+<rect x="220" y="630" width="456.5" height="44" rx="10" fill="#2FA36B" fill-opacity="1.0" stroke="#2FA36B" stroke-width="0"/>
+<text x="688.5" y="661" fill="#2FA36B" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">91.3</text>
+<line x1="220" y1="735" x2="720" y2="735" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<line x1="220.0" y1="735" x2="220.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<text x="220.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">0</text>
+<line x1="320.0" y1="735" x2="320.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<text x="320.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">20</text>
+<line x1="420.0" y1="735" x2="420.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<text x="420.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">40</text>
+<line x1="520.0" y1="735" x2="520.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<text x="520.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">60</text>
+<line x1="620.0" y1="735" x2="620.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<text x="620.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">80</text>
+<line x1="720.0" y1="735" x2="720.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<text x="720.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">100</text>
+<text x="1190" y="120" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">平均目标误差 / m</text>
+<text x="990" y="210" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">完整方法</text>
+<rect x="1010" y="180" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
+<rect x="1010" y="180" width="190.625" height="44" rx="10" fill="#2FA36B" fill-opacity="1.0" stroke="#2FA36B" stroke-width="0"/>
+<text x="1212.625" y="211" fill="#2FA36B" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">0.061</text>
+<text x="990" y="300" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">名义位移标签</text>
+<rect x="1010" y="270" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
+<rect x="1010" y="270" width="253.125" height="44" rx="10" fill="#8064C6" fill-opacity="1.0" stroke="#8064C6" stroke-width="0"/>
+<text x="1275.125" y="301" fill="#8064C6" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">0.081</text>
+<text x="990" y="390" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">无近邻增强</text>
+<rect x="1010" y="360" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
+<rect x="1010" y="360" width="275.0" height="44" rx="10" fill="#27A7B8" fill-opacity="1.0" stroke="#27A7B8" stroke-width="0"/>
+<text x="1297.0" y="391" fill="#27A7B8" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">0.088</text>
+<text x="990" y="480" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">无DAgger</text>
+<rect x="1010" y="450" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
+<rect x="1010" y="450" width="328.125" height="44" rx="10" fill="#6F91C7" fill-opacity="1.0" stroke="#6F91C7" stroke-width="0"/>
+<text x="1350.125" y="481" fill="#6F91C7" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">0.105</text>
+<text x="990" y="570" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">无PPO</text>
+<rect x="1010" y="540" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
+<rect x="1010" y="540" width="362.5" height="44" rx="10" fill="#F28E2B" fill-opacity="1.0" stroke="#F28E2B" stroke-width="0"/>
+<text x="1384.5" y="571" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">0.116</text>
+<text x="990" y="660" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">无Teacher</text>
+<rect x="1010" y="630" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
+<rect x="1010" y="630" width="428.125" height="44" rx="10" fill="#D9544D" fill-opacity="1.0" stroke="#D9544D" stroke-width="0"/>
+<text x="1450.125" y="661" fill="#D9544D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">0.137</text>
+<line x1="1010" y1="735" x2="1510" y2="735" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<line x1="1010.0" y1="735" x2="1010.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<text x="1010.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">0.00</text>
+<line x1="1135.0" y1="735" x2="1135.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<text x="1135.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">0.04</text>
+<line x1="1260.0" y1="735" x2="1260.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<text x="1260.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">0.08</text>
+<line x1="1385.0" y1="735" x2="1385.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<text x="1385.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">0.12</text>
+<line x1="1510.0" y1="735" x2="1510.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
+<text x="1510.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">0.16</text>
+<line x1="800" y1="120" x2="800" y2="790" stroke="#DDE3EA" stroke-width="2" stroke-linecap="round"/>
+<text x="1570" y="878" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" font-style="normal" text-anchor="end">虚构仿真数据，仅用于论文写作演示</text>
+</svg>

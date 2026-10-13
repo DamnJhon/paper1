@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#183B56"/></marker>
+<marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2F6BFF"/></marker>
+<marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2FA36B"/></marker>
+<linearGradient id="bluegrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EAF1FF"/><stop offset="1" stop-color="#D9E8FF"/></linearGradient>
+<linearGradient id="heat" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#EDF2F7"/><stop offset="0.35" stop-color="#A9D7D0"/><stop offset="0.7" stop-color="#42A88F"/><stop offset="1" stop-color="#136C64"/></linearGradient>
+</defs>
+<rect width="1600" height="900" fill="white"/>
+<text x="800.0" y="54" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="34" font-weight="700" font-style="normal" text-anchor="middle">训练阶段利用完整参考，部署阶段仅保留二维目标位移命令</text>
+<rect x="70" y="88" width="250" height="42" rx="21" fill="#EAF1FF" fill-opacity="1.0" stroke="#EAF1FF" stroke-width="0"/>
+<text x="195.0" y="117" fill="#2F6BFF" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="600" font-style="normal" text-anchor="middle">阶段 I 参考构建</text>
+<rect x="395" y="88" width="230" height="42" rx="21" fill="#FFF1E2" fill-opacity="1.0" stroke="#FFF1E2" stroke-width="0"/>
+<text x="510.0" y="117" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="600" font-style="normal" text-anchor="middle">阶段 II Teacher</text>
+<rect x="720" y="88" width="245" height="42" rx="21" fill="#F0ECFA" fill-opacity="1.0" stroke="#F0ECFA" stroke-width="0"/>
+<text x="842.5" y="117" fill="#8064C6" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="600" font-style="normal" text-anchor="middle">阶段 III 重标注</text>
+<rect x="1055" y="88" width="240" height="42" rx="21" fill="#E8F6F1" fill-opacity="1.0" stroke="#E8F6F1" stroke-width="0"/>
+<text x="1175.0" y="117" fill="#178C7B" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="600" font-style="normal" text-anchor="middle">阶段 IV Student</text>
+<rect x="1350" y="88" width="150" height="42" rx="21" fill="#EAF5F0" fill-opacity="1.0" stroke="#EAF5F0" stroke-width="0"/>
+<text x="1425.0" y="117" fill="#2FA36B" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="600" font-style="normal" text-anchor="middle">部署</text>
+<rect x="55" y="180" width="255" height="150" rx="22" fill="#EAF1FF" fill-opacity="1.0" stroke="#2F6BFF" stroke-width="3"/>
+<text x="182.5" y="235" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="23" font-weight="650" text-anchor="middle">
+<tspan x="182.5" dy="0">跳跃动作数据库</tspan>
+<tspan x="182.5" dy="34.5">姿态 · 速度 · 接触</tspan>
+</text>
+<rect x="360" y="180" width="270" height="150" rx="22" fill="#FFF1E2" fill-opacity="1.0" stroke="#F28E2B" stroke-width="3"/>
+<text x="495.0" y="235" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="23" font-weight="650" text-anchor="middle">
+<tspan x="495.0" dy="0">参考轨迹条件 Teacher</tspan>
+<tspan x="495.0" dy="34.5">完整状态 + 未来参考</tspan>
+</text>
+<rect x="690" y="180" width="270" height="150" rx="22" fill="#F0ECFA" fill-opacity="1.0" stroke="#8064C6" stroke-width="3"/>
+<text x="825.0" y="235" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="23" font-weight="650" text-anchor="middle">
+<tspan x="825.0" dy="0">实际起落位移标注</tspan>
+<tspan x="825.0" dy="34.5">g = (Δx*, Δy*)</tspan>
+</text>
+<rect x="1020" y="180" width="270" height="150" rx="22" fill="#E8F6F1" fill-opacity="1.0" stroke="#178C7B" stroke-width="3"/>
+<text x="1155.0" y="235" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="23" font-weight="650" text-anchor="middle">
+<tspan x="1155.0" dy="0">DAgger-PPO Student</tspan>
+<tspan x="1155.0" dy="34.5">模仿 + 任务回报</tspan>
+</text>
+<rect x="1340" y="180" width="210" height="150" rx="22" fill="#EAF5F0" fill-opacity="1.0" stroke="#2FA36B" stroke-width="3"/>
+<text x="1445.0" y="235" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="650" text-anchor="middle">
+<tspan x="1445.0" dy="0">低层策略</tspan>
+<tspan x="1445.0" dy="31.5">29维关节动作</tspan>
+</text>
+<line x1="318" y1="255" x2="348" y2="255" stroke="#183B56" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="638" y1="255" x2="678" y2="255" stroke="#183B56" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="968" y1="255" x2="1008" y2="255" stroke="#183B56" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="1298" y1="255" x2="1328" y2="255" stroke="#183B56" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="55" y="380" width="905" height="380" rx="22" fill="#FBFCFE" fill-opacity="1.0" stroke="#A9B4BF" stroke-width="2" stroke-dasharray="10 8"/>
+<text x="85" y="425" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="start">仅训练阶段使用</text>
+<rect x="85" y="465" width="250" height="220" rx="18" fill="#FFFFFF" fill-opacity="1.0" stroke="#2F6BFF" stroke-width="2"/>
+<text x="210" y="510" fill="#2F6BFF" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">离线数据增强</text>
+<rect x="125" y="535" width="170" height="42" rx="21" fill="#EAF1FF" fill-opacity="1.0" stroke="#EAF1FF" stroke-width="0"/>
+<text x="210.0" y="564" fill="#2F6BFF" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="600" font-style="normal" text-anchor="middle">近邻检索</text>
+<rect x="125" y="573" width="170" height="42" rx="21" fill="#EAF1FF" fill-opacity="1.0" stroke="#EAF1FF" stroke-width="0"/>
+<text x="210.0" y="602" fill="#2F6BFF" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="600" font-style="normal" text-anchor="middle">方向旋转</text>
+<rect x="125" y="611" width="170" height="42" rx="21" fill="#EAF1FF" fill-opacity="1.0" stroke="#EAF1FF" stroke-width="0"/>
+<text x="210.0" y="640" fill="#2F6BFF" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="600" font-style="normal" text-anchor="middle">幅度筛选</text>
+<rect x="125" y="649" width="170" height="42" rx="21" fill="#EAF1FF" fill-opacity="1.0" stroke="#EAF1FF" stroke-width="0"/>
+<text x="210.0" y="678" fill="#2F6BFF" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="600" font-style="normal" text-anchor="middle">可行性检查</text>
+<rect x="375" y="465" width="250" height="220" rx="18" fill="#FFFFFF" fill-opacity="1.0" stroke="#F28E2B" stroke-width="2"/>
+<text x="500" y="510" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">Teacher监督</text>
+<text x="500" y="555" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="400" text-anchor="middle">
+<tspan x="500" dy="0">动作相位</tspan>
+<tspan x="500" dy="32.550000000000004">短时未来姿态</tspan>
+<tspan x="500" dy="32.550000000000004">参考足端与接触</tspan>
+<tspan x="500" dy="32.550000000000004">仿真完整状态</tspan>
+</text>
+<rect x="665" y="465" width="250" height="220" rx="18" fill="#FFFFFF" fill-opacity="1.0" stroke="#8064C6" stroke-width="2"/>
+<text x="790" y="510" fill="#8064C6" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">轨迹重标注</text>
+<text x="790" y="560" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="400" text-anchor="middle">
+<tspan x="790" dy="0">名义参考位移</tspan>
+<tspan x="790" dy="30.45">↓</tspan>
+<tspan x="790" dy="30.45">Teacher实际位移</tspan>
+<tspan x="790" dy="30.45">形成目标条件数据</tspan>
+</text>
+<rect x="1015" y="380" width="535" height="380" rx="22" fill="#F7FBF9" fill-opacity="1.0" stroke="#2FA36B" stroke-width="3"/>
+<text x="1050" y="425" fill="#2FA36B" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="start">部署阶段保留</text>
+<rect x="1055" y="475" width="195" height="110" rx="18" fill="#FFFFFF" fill-opacity="1.0" stroke="#178C7B" stroke-width="2"/>
+<text x="1152" y="518" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="24" font-weight="650" text-anchor="middle">
+<tspan x="1152" dy="0">本体观测</tspan>
+<tspan x="1152" dy="32.400000000000006">oₜ</tspan>
+</text>
+<rect x="1055" y="620" width="195" height="110" rx="18" fill="#FFFFFF" fill-opacity="1.0" stroke="#178C7B" stroke-width="2"/>
+<text x="1152" y="663" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="650" text-anchor="middle">
+<tspan x="1152" dy="0">目标命令</tspan>
+<tspan x="1152" dy="29.700000000000003">g = (Δx*, Δy*)</tspan>
+</text>
+<rect x="1320" y="525" width="185" height="130" rx="22" fill="#E8F6F1" fill-opacity="1.0" stroke="#2FA36B" stroke-width="3"/>
+<text x="1412" y="572" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" text-anchor="middle">
+<tspan x="1412" dy="0">Student</tspan>
+<tspan x="1412" dy="33.75">策略网络</tspan>
+</text>
+<line x1="1250" y1="530" x2="1300" y2="570" stroke="#178C7B" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-green)"/>
+<line x1="1250" y1="675" x2="1300" y2="610" stroke="#178C7B" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-green)"/>
+<text x="800" y="830" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="27" font-weight="700" font-style="normal" text-anchor="middle">核心：参考轨迹是训练资源，而不是部署时必须持续提供的控制命令</text>
+</svg>

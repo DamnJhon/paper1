@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#183B56"/></marker>
+<marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2F6BFF"/></marker>
+<marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2FA36B"/></marker>
+<linearGradient id="bluegrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EAF1FF"/><stop offset="1" stop-color="#D9E8FF"/></linearGradient>
+<linearGradient id="heat" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#EDF2F7"/><stop offset="0.35" stop-color="#A9D7D0"/><stop offset="0.7" stop-color="#42A88F"/><stop offset="1" stop-color="#136C64"/></linearGradient>
+</defs>
+<rect width="1600" height="900" fill="white"/>
+<text x="800.0" y="54" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="34" font-weight="700" font-style="normal" text-anchor="middle">基于运动特征近邻检索的参考数据增强</text>
+<rect x="55" y="150" width="250" height="520" rx="22" fill="#EAF1FF" fill-opacity="1.0" stroke="#2F6BFF" stroke-width="3"/>
+<text x="180" y="200" fill="#2F6BFF" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">原始动作片段</text>
+<rect x="365" y="150" width="250" height="520" rx="22" fill="#F0ECFA" fill-opacity="1.0" stroke="#8064C6" stroke-width="3"/>
+<text x="490" y="200" fill="#8064C6" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">运动特征检索</text>
+<rect x="675" y="150" width="250" height="520" rx="22" fill="#FFF1E2" fill-opacity="1.0" stroke="#F28E2B" stroke-width="3"/>
+<text x="800" y="200" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">几何与时序变换</text>
+<rect x="985" y="150" width="250" height="520" rx="22" fill="#FDECEB" fill-opacity="1.0" stroke="#D9544D" stroke-width="3"/>
+<text x="1110" y="200" fill="#D9544D" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">可行性筛选</text>
+<rect x="1295" y="150" width="250" height="520" rx="22" fill="#E8F6F1" fill-opacity="1.0" stroke="#178C7B" stroke-width="3"/>
+<text x="1420" y="200" fill="#178C7B" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">参考目标覆盖</text>
+<line x1="310" y1="410" x2="350" y2="410" stroke="#183B56" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="620" y1="410" x2="660" y2="410" stroke="#183B56" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="930" y1="410" x2="970" y2="410" stroke="#183B56" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="1240" y1="410" x2="1280" y2="410" stroke="#183B56" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="95" y1="327" x2="265" y2="327" stroke="#A9B4BF" stroke-width="2" stroke-linecap="round"/>
+<circle cx="175" cy="265" r="18" fill="#FFFFFF" fill-opacity="1.0" stroke="#183B56" stroke-width="3"/>
+<line x1="175" y1="283" x2="170" y2="333" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="170" y1="307" x2="133" y2="327" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="170" y1="307" x2="213" y2="310" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="170" y1="333" x2="143" y2="371" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="170" y1="333" x2="205" y2="367" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="95" y1="447" x2="265" y2="447" stroke="#A9B4BF" stroke-width="2" stroke-linecap="round"/>
+<circle cx="183" cy="385" r="18" fill="#FFFFFF" fill-opacity="1.0" stroke="#183B56" stroke-width="3"/>
+<line x1="183" y1="403" x2="178" y2="453" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="178" y1="427" x2="149" y2="447" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="178" y1="427" x2="221" y2="425" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="178" y1="453" x2="151" y2="481" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="178" y1="453" x2="213" y2="479" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="95" y1="567" x2="265" y2="567" stroke="#A9B4BF" stroke-width="2" stroke-linecap="round"/>
+<circle cx="191" cy="505" r="18" fill="#FFFFFF" fill-opacity="1.0" stroke="#183B56" stroke-width="3"/>
+<line x1="191" y1="523" x2="186" y2="573" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="186" y1="547" x2="165" y2="567" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="186" y1="547" x2="229" y2="540" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="186" y1="573" x2="159" y2="591" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<line x1="186" y1="573" x2="221" y2="591" stroke="#183B56" stroke-width="5" stroke-linecap="round"/>
+<text x="180" y="635" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="middle">12条重定向跳跃</text>
+<rect x="405" y="265" width="170" height="46" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#2F6BFF" stroke-width="2"/>
+<text x="490" y="296" fill="#2F6BFF" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="650" font-style="normal" text-anchor="middle">q, q̇</text>
+<rect x="405" y="333" width="170" height="46" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#8064C6" stroke-width="2"/>
+<text x="490" y="364" fill="#8064C6" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="650" font-style="normal" text-anchor="middle">根节点</text>
+<rect x="405" y="401" width="170" height="46" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#178C7B" stroke-width="2"/>
+<text x="490" y="432" fill="#178C7B" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="650" font-style="normal" text-anchor="middle">足端</text>
+<rect x="405" y="469" width="170" height="46" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#F28E2B" stroke-width="2"/>
+<text x="490" y="500" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="650" font-style="normal" text-anchor="middle">接触</text>
+<rect x="405" y="537" width="170" height="46" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#D9544D" stroke-width="2"/>
+<text x="490" y="568" fill="#D9544D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="650" font-style="normal" text-anchor="middle">相位</text>
+<text x="490" y="625" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">加权距离 + 目标一致性</text>
+<circle cx="735" cy="275" r="26" fill="#FFFFFF" fill-opacity="1.0" stroke="#F28E2B" stroke-width="2"/>
+<text x="735" y="284" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" font-style="normal" text-anchor="middle">↻</text>
+<text x="785" y="283" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="600" font-style="normal" text-anchor="start">平面旋转</text>
+<circle cx="735" cy="361" r="26" fill="#FFFFFF" fill-opacity="1.0" stroke="#F28E2B" stroke-width="2"/>
+<text x="735" y="370" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" font-style="normal" text-anchor="middle">↔</text>
+<text x="785" y="369" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="600" font-style="normal" text-anchor="start">幅度分组</text>
+<circle cx="735" cy="447" r="26" fill="#FFFFFF" fill-opacity="1.0" stroke="#F28E2B" stroke-width="2"/>
+<text x="735" y="456" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" font-style="normal" text-anchor="middle">≋</text>
+<text x="785" y="455" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="600" font-style="normal" text-anchor="start">相位对齐</text>
+<circle cx="735" cy="533" r="26" fill="#FFFFFF" fill-opacity="1.0" stroke="#F28E2B" stroke-width="2"/>
+<text x="735" y="542" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" font-style="normal" text-anchor="middle">∿</text>
+<text x="785" y="541" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="600" font-style="normal" text-anchor="start">轨迹平滑</text>
+<circle cx="1040" cy="258" r="15" fill="#2FA36B" fill-opacity="1.0" stroke="#2FA36B" stroke-width="1"/>
+<text x="1040" y="265" fill="#FFFFFF" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" font-style="normal" text-anchor="middle">✓</text>
+<text x="1072" y="265" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="start">关节限位</text>
+<circle cx="1040" cy="326" r="15" fill="#2FA36B" fill-opacity="1.0" stroke="#2FA36B" stroke-width="1"/>
+<text x="1040" y="333" fill="#FFFFFF" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" font-style="normal" text-anchor="middle">✓</text>
+<text x="1072" y="333" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="start">速度连续</text>
+<circle cx="1040" cy="394" r="15" fill="#2FA36B" fill-opacity="1.0" stroke="#2FA36B" stroke-width="1"/>
+<text x="1040" y="401" fill="#FFFFFF" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" font-style="normal" text-anchor="middle">✓</text>
+<text x="1072" y="401" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="start">足端无穿透</text>
+<circle cx="1040" cy="462" r="15" fill="#2FA36B" fill-opacity="1.0" stroke="#2FA36B" stroke-width="1"/>
+<text x="1040" y="469" fill="#FFFFFF" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" font-style="normal" text-anchor="middle">✓</text>
+<text x="1072" y="469" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="start">接触一致</text>
+<circle cx="1040" cy="530" r="15" fill="#2FA36B" fill-opacity="1.0" stroke="#2FA36B" stroke-width="1"/>
+<text x="1040" y="537" fill="#FFFFFF" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" font-style="normal" text-anchor="middle">✓</text>
+<text x="1072" y="537" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="start">落地可恢复</text>
+<text x="1110" y="625" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">不合格样本不进入Teacher训练</text>
+<line x1="1330" y1="430" x2="1510" y2="430" stroke="#607080" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="1420" y1="580" x2="1420" y2="270" stroke="#607080" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<ellipse cx="1420" cy="430" rx="45" ry="45" fill="none" fill-opacity="1.0" stroke="#DDE3EA" stroke-width="1" stroke-dasharray="5 5"/>
+<circle cx="1460.6272937500967" cy="430.0" r="7" fill="#2F6BFF" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1462.3898373933557" cy="399.2019803784952" r="7" fill="#178C7B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1432.0582431054374" cy="392.8885437071382" r="7" fill="#2FA36B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1405.0815646946808" cy="384.08577726040505" r="7" fill="#F28E2B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1388.963709935752" cy="407.45081535681345" r="7" fill="#8064C6" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1379.0409442411346" cy="430.0" r="7" fill="#2F6BFF" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1377.1333797241662" cy="461.14442266225007" r="7" fill="#178C7B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1407.5310523787582" cy="468.3754748197963" r="7" fill="#2FA36B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1434.6072008653152" cy="474.9563416273927" r="7" fill="#F28E2B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1455.87678106026" cy="456.06600720821615" r="7" fill="#8064C6" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<ellipse cx="1420" cy="430" rx="85" ry="85" fill="none" fill-opacity="1.0" stroke="#DDE3EA" stroke-width="1" stroke-dasharray="5 5"/>
+<circle cx="1503.6442456138582" cy="419.91423230234136" r="7" fill="#178C7B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1482.2320593921675" cy="372.2199848081655" r="7" fill="#2FA36B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1435.4499376908366" cy="351.4289104632446" r="7" fill="#F28E2B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1382.0204068581377" cy="348.0882492372723" r="7" fill="#8064C6" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1351.4837010504555" cy="391.8259236307513" r="7" fill="#2F6BFF" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1339.8337532064331" cy="439.66639290508624" r="7" fill="#178C7B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1363.3373779386354" cy="482.6090120669683" r="7" fill="#2FA36B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1404.319962798953" cy="509.74126702102046" r="7" fill="#F28E2B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1455.133608405036" cy="505.7737283893265" r="7" fill="#8064C6" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1499.8726141284476" cy="474.50128390321004" r="7" fill="#2F6BFF" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<ellipse cx="1420" cy="430" rx="125" ry="125" fill="none" fill-opacity="1.0" stroke="#DDE3EA" stroke-width="1" stroke-dasharray="5 5"/>
+<circle cx="1539.5379086832306" cy="400.74707713765696" r="7" fill="#2FA36B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1496.770691733374" cy="339.31162824365776" r="7" fill="#F28E2B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1428.9749550232657" cy="309.1992333396552" r="7" fill="#8064C6" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1350.082304686839" cy="317.0186133158094" r="7" fill="#2F6BFF" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1310.7767331657305" cy="385.3177783777814" r="7" fill="#178C7B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1296.7151738668615" cy="460.16985614602777" r="7" fill="#2FA36B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1340.5055716470292" cy="523.9058917961804" r="7" fill="#F28E2B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1410.5479129867476" cy="557.2228501180504" r="7" fill="#8064C6" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1484.4182799557645" cy="534.0947726410927" r="7" fill="#2F6BFF" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<circle cx="1538.526301203332" cy="478.4880063738165" r="7" fill="#178C7B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="1"/>
+<text x="1517" y="433" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="start">Δx</text>
+<text x="1424" y="262" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="start">Δy</text>
+<text x="1420" y="625" fill="#178C7B" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="700" font-style="normal" text-anchor="middle">多方向 × 多距离</text>
+<rect x="190" y="735" width="1220" height="90" rx="18" fill="#FAFBFD" fill-opacity="1.0" stroke="#A9B4BF" stroke-width="1"/>
+<text x="800" y="790" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="650" font-style="normal" text-anchor="middle">离线检索负责组织参考数据；部署阶段不访问动作数据库，也不执行在线 Motion Matching</text>
+</svg>
