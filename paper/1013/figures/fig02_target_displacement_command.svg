@@ -1,55 +1,209 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="900" viewBox="0 0 1600 900">
-<defs>
-<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#183B56"/></marker>
-<marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2F6BFF"/></marker>
-<marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2FA36B"/></marker>
-<linearGradient id="bluegrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EAF1FF"/><stop offset="1" stop-color="#D9E8FF"/></linearGradient>
-<linearGradient id="heat" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#EDF2F7"/><stop offset="0.35" stop-color="#A9D7D0"/><stop offset="0.7" stop-color="#42A88F"/><stop offset="1" stop-color="#136C64"/></linearGradient>
-</defs>
-<rect width="1600" height="900" fill="white"/>
-<text x="800.0" y="54" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="34" font-weight="700" font-style="normal" text-anchor="middle">二维目标位移命令及坐标定义</text>
-<rect x="45" y="100" width="960" height="720" rx="22" fill="#FCFDFE" fill-opacity="1.0" stroke="#DDE3EA" stroke-width="2"/>
-<line x1="350" y1="620" x2="780" y2="620" stroke="#607080" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
-<line x1="350" y1="620" x2="350" y2="230" stroke="#607080" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
-<text x="800" y="630" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="400" font-style="normal" text-anchor="start">世界坐标 Xᴡ</text>
-<text x="335" y="205" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="400" font-style="normal" text-anchor="end">世界坐标 Yᴡ</text>
-<line x1="350" y1="620" x2="568.7429987478853" y2="691.073908706238" stroke="#2F6BFF" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
-<line x1="350" y1="620" x2="411.80339887498945" y2="429.78869674096927" stroke="#2F6BFF" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
-<text x="587.7641290737884" y="697.2542485937369" fill="#2F6BFF" font-family="Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" font-style="normal" text-anchor="start">xᴮ⁰（前）</text>
-<text x="414.89356881873897" y="420.2781315780178" fill="#2F6BFF" font-family="Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" font-style="normal" text-anchor="start">yᴮ⁰（左）</text>
-<circle cx="350" cy="620" r="14" fill="#2F6BFF" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="3"/>
-<text x="350" y="662" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="700" font-style="normal" text-anchor="middle">起跳位置 p_takeoff</text>
-<circle cx="760" cy="350" r="16" fill="#F28E2B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="3"/>
-<text x="774" y="325" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="700" font-style="normal" text-anchor="middle">期望目标 p_target</text>
-<circle cx="720" cy="385" r="14" fill="#2FA36B" fill-opacity="1.0" stroke="#FFFFFF" stroke-width="3"/>
-<text x="750" y="430" fill="#2FA36B" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="700" font-style="normal" text-anchor="middle">实际落点 p_land</text>
-<line x1="362" y1="608" x2="742" y2="362" stroke="#F28E2B" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
-<text x="575" y="440" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">目标命令 g</text>
-<line x1="362" y1="616" x2="704" y2="397" stroke="#2FA36B" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow-green)"/>
-<text x="560" y="520" fill="#2FA36B" font-family="Noto Sans CJK SC, sans-serif" font-size="24" font-weight="700" font-style="normal" text-anchor="middle">实际位移 Δp</text>
-<line x1="720" y1="385" x2="760" y2="350" stroke="#D9544D" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
-<text x="770" y="408" fill="#D9544D" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="700" font-style="normal" text-anchor="start">误差 eₚ</text>
-<path d="M 350 620 A 120 120 0 0 0 460 570" fill="none" stroke="#2F6BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1.0" stroke-dasharray="6 5"/>
-<text x="425" y="575" fill="#2F6BFF" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="start">起跳时锁定航向</text>
-<rect x="1040" y="100" width="515" height="720" rx="22" fill="#FFFFFF" fill-opacity="1.0" stroke="#183B56" stroke-width="2"/>
-<text x="1297" y="155" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" font-style="normal" text-anchor="middle">命令语义</text>
-<rect x="1090" y="195" width="415" height="108" rx="16" fill="#EAF1FF" fill-opacity="1.0" stroke="#2F6BFF" stroke-width="2"/>
-<text x="1297" y="242" fill="#2F6BFF" font-family="Noto Sans CJK SC, sans-serif" font-size="31" font-weight="700" font-style="normal" text-anchor="middle">g = (Δx*, Δy*)</text>
-<text x="1297" y="278" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="400" font-style="normal" text-anchor="middle">前后位移 + 左右位移</text>
-<text x="1095" y="350" fill="#178C7B" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="700" font-style="normal" text-anchor="start">坐标系</text>
-<text x="1215" y="350" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="start">起跳瞬间锁定的机体航向坐标系</text>
-<line x1="1090" y1="375" x2="1505" y2="375" stroke="#DDE3EA" stroke-width="1" stroke-linecap="round"/>
-<text x="1095" y="432" fill="#178C7B" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="700" font-style="normal" text-anchor="start">更新时间</text>
-<text x="1215" y="432" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="start">触发起跳时锁存，恢复完成后释放</text>
-<line x1="1090" y1="457" x2="1505" y2="457" stroke="#DDE3EA" stroke-width="1" stroke-linecap="round"/>
-<text x="1095" y="514" fill="#178C7B" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="700" font-style="normal" text-anchor="start">表达内容</text>
-<text x="1215" y="514" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="start">期望起落位置关系</text>
-<line x1="1090" y1="539" x2="1505" y2="539" stroke="#DDE3EA" stroke-width="1" stroke-linecap="round"/>
-<text x="1095" y="596" fill="#178C7B" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="700" font-style="normal" text-anchor="start">不包含</text>
-<text x="1215" y="596" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="start">动作相位、未来姿态、足端轨迹</text>
-<line x1="1090" y1="621" x2="1505" y2="621" stroke="#DDE3EA" stroke-width="1" stroke-linecap="round"/>
-<text x="1095" y="678" fill="#178C7B" font-family="Noto Sans CJK SC, sans-serif" font-size="22" font-weight="700" font-style="normal" text-anchor="start">评价量</text>
-<text x="1215" y="678" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="start">eₚ = ‖Δp − g‖₂</text>
-<rect x="1090" y="730" width="415" height="55" rx="12" fill="#FFF1E2" fill-opacity="1.0" stroke="#FFF1E2" stroke-width="0"/>
-<text x="1297" y="765" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="650" font-style="normal" text-anchor="middle">“紧凑”仅指相对完整参考轨迹减少过程信息</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="446.4pt" height="241.2pt" viewBox="0 0 446.4 241.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 241.2
+L 446.4 241.2
+L 446.4 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 72.461854 189.371415
+Q 239.419317 189.371415 405.258746 189.371415
+" clip-path="url(#pddf830bb62)" style="fill: none; stroke: #58636d; stroke-linecap: round"/>
+    <path d="M 401.258746 187.371415
+L 405.258746 189.371415
+L 401.258746 191.371415
+z
+" clip-path="url(#pddf830bb62)" style="fill: #58636d; stroke: #58636d; stroke-linecap: round"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 72.461854 189.371415
+Q 72.461854 105.892683 72.461854 23.531985
+" clip-path="url(#pddf830bb62)" style="fill: none; stroke: #58636d; stroke-linecap: round"/>
+    <path d="M 70.461854 27.531985
+L 72.461854 23.531985
+L 74.461854 27.531985
+z
+" clip-path="url(#pddf830bb62)" style="fill: #58636d; stroke: #58636d; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 72.461854 189.371415
+Q 204.004098 126.129951 334.538711 63.372926
+" clip-path="url(#pddf830bb62)" style="fill: none; stroke: #285d7b; stroke-linecap: round"/>
+    <path d="M 330.067112 63.303599
+L 334.538711 63.372926
+L 331.80029 66.908608
+z
+" clip-path="url(#pddf830bb62)" style="fill: #285d7b; stroke: #285d7b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 72.461854 189.371415
+Q 183.766829 159.015512 293.993166 128.953784
+" clip-path="url(#pddf830bb62)" style="fill: none; stroke: #9d5138; stroke-linecap: round"/>
+    <path d="M 289.607876 128.076726
+L 293.993166 128.953784
+L 290.660346 131.935781
+z
+" clip-path="url(#pddf830bb62)" style="fill: #9d5138; stroke: #9d5138; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 335.546341 189.371415
+L 335.546341 62.888488
+L 72.461854 62.888488
+" clip-path="url(#pddf830bb62)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #58636d; stroke-width: 0.8"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 295.071805 128.65961
+L 335.546341 62.888488
+" clip-path="url(#pddf830bb62)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #58636d"/>
+   </g>
+   <g id="text_1">
+    <!-- $x$ -->
+    <g style="fill: #58636d" transform="translate(411.436098 192.407005)">
+     <text>
+      <tspan x="0" y="-0.53125" style="font-style: oblique; font-size: 10px; font-family: 'DejaVu Sans'; fill: #58636d">x</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_2">
+    <!-- $y$ -->
+    <g style="fill: #58636d" transform="translate(63.355083 18.366498)">
+     <text>
+      <tspan x="0" y="-0.53125" style="font-style: oblique; font-size: 10px; font-family: 'DejaVu Sans'; fill: #58636d">y</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_3">
+    <!-- 起跳坐标系 $\mathcal{B}_0$ -->
+    <g style="fill: #252b30" transform="translate(43.623746 206.573093)">
+     <text>
+      <tspan x="0" y="-0.15625" style="font-size: 9px; font-family: 'Noto Sans CJK JP'; fill: #252b30">起</tspan>
+      <tspan x="9" y="-0.15625" style="font-size: 9px; font-family: 'Noto Sans CJK JP'; fill: #252b30">跳</tspan>
+      <tspan x="18" y="-0.15625" style="font-size: 9px; font-family: 'Noto Sans CJK JP'; fill: #252b30">坐</tspan>
+      <tspan x="27" y="-0.15625" style="font-size: 9px; font-family: 'Noto Sans CJK JP'; fill: #252b30">标</tspan>
+      <tspan x="36" y="-0.15625" style="font-size: 9px; font-family: 'Noto Sans CJK JP'; fill: #252b30">系</tspan>
+      <tspan x="45" y="-0.15625" style="font-size: 9px; font-family: 'Noto Sans CJK JP'; fill: #252b30"> </tspan>
+      <tspan x="47.015991" y="-0.15625" style="font-style: italic; font-size: 9px; font-family: 'STIXNonUnicode'; fill: #252b30"></tspan>
+      <tspan x="53.618115" y="1.320312" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">0</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="C0_0_c3060adad7" d="M 0 2.12132
+C 0.562581 2.12132 1.102195 1.897805 1.5 1.5
+C 1.897805 1.102195 2.12132 0.562581 2.12132 -0
+C 2.12132 -0.562581 1.897805 -1.102195 1.5 -1.5
+C 1.102195 -1.897805 0.562581 -2.12132 0 -2.12132
+C -0.562581 -2.12132 -1.102195 -1.897805 -1.5 -1.5
+C -1.897805 -1.102195 -2.12132 -0.562581 -2.12132 0
+C -2.12132 0.562581 -1.897805 1.102195 -1.5 1.5
+C -1.102195 1.897805 -0.562581 2.12132 0 2.12132
+z
+"/>
+    </defs>
+    <g clip-path="url(#pddf830bb62)">
+     <use xlink:href="#C0_0_c3060adad7" x="72.461854" y="189.371415" style="fill: #252b30; stroke: #252b30"/>
+    </g>
+    <g clip-path="url(#pddf830bb62)">
+     <use xlink:href="#C0_0_c3060adad7" x="335.546341" y="62.888488" style="fill: #285d7b; stroke: #285d7b"/>
+    </g>
+    <g clip-path="url(#pddf830bb62)">
+     <use xlink:href="#C0_0_c3060adad7" x="295.071805" y="128.65961" style="fill: #9d5138; stroke: #9d5138"/>
+    </g>
+   </g>
+   <g id="text_4">
+    <!-- 目标 $g$ -->
+    <g style="fill: #285d7b" transform="translate(340.605659 54.287649)">
+     <text>
+      <tspan x="0" y="-0.328125" style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #285d7b">目</tspan>
+      <tspan x="9.999985" y="-0.328125" style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #285d7b">标</tspan>
+      <tspan x="19.999969" y="-0.328125" style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #285d7b"> </tspan>
+      <tspan x="22.23996" y="-0.328125" style="font-style: oblique; font-size: 10px; font-family: 'DejaVu Sans'; fill: #285d7b">g</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_5">
+    <!-- 实际位移 $\Delta p$ -->
+    <g style="fill: #9d5138" transform="translate(300.131122 145.355356)">
+     <text>
+      <tspan x="0" y="-0.234375" style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">实</tspan>
+      <tspan x="9.999985" y="-0.234375" style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">际</tspan>
+      <tspan x="19.999969" y="-0.234375" style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">位</tspan>
+      <tspan x="29.999954" y="-0.234375" style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">移</tspan>
+      <tspan x="39.999939" y="-0.234375" style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #9d5138"> </tspan>
+      <tspan x="42.239929" y="-0.234375" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #9d5138">Δ</tspan>
+      <tspan x="49.08075" y="-0.234375" style="font-style: oblique; font-size: 10px; font-family: 'DejaVu Sans'; fill: #9d5138">p</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_6">
+    <!-- $e_p=\|\Delta p-g\|_2$ -->
+    <g style="fill: #58636d" transform="translate(339.087863 101.845229)">
+     <text>
+      <tspan x="0" y="-0.125" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #58636d">e</tspan>
+      <tspan x="31.486816" y="-0.125" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #58636d">p</tspan>
+      <tspan x="48.247559" y="-0.125" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #58636d">g</tspan>
+      <tspan x="5.537109" y="1.351562" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #58636d">p</tspan>
+      <tspan x="11.535645" y="-0.125" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #58636d">=</tspan>
+      <tspan x="20.830078" y="-0.125" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #58636d">‖</tspan>
+      <tspan x="25.330078" y="-0.125" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #58636d">Δ</tspan>
+      <tspan x="38.953125" y="-0.125" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #58636d">−</tspan>
+      <tspan x="53.960449" y="-0.125" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #58636d">‖</tspan>
+      <tspan x="58.546582" y="1.351562" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #58636d">2</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_7">
+    <!-- $\Delta x^*$ -->
+    <g style="fill: #252b30" transform="translate(326.636341 202.019707)">
+     <text>
+      <tspan x="0" y="-0.873438" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">Δ</tspan>
+      <tspan x="6.156738" y="-0.873438" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">x</tspan>
+      <tspan x="13.112256" y="-4.31875" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">*</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_8">
+    <!-- $\Delta y^*$ -->
+    <g style="fill: #252b30" transform="translate(48.570673 62.888488)">
+     <text>
+      <tspan x="0" y="-0.873438" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">Δ</tspan>
+      <tspan x="6.156738" y="-0.873438" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">y</tspan>
+      <tspan x="13.112256" y="-4.31875" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">*</tspan>
+     </text>
+    </g>
+   </g>
+  </g>
+  <g id="text_9">
+   <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #252b30" x="223.2" y="235.17" transform="rotate(-0 223.2 235.17)">起跳时锁定局部坐标系与目标，地面位置均指基座水平投影。</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pddf830bb62">
+   <rect x="37.046634" y="7.236" width="394.626732" height="207.432"/>
+  </clipPath>
+ </defs>
 </svg>

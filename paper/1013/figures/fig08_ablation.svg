@@ -1,87 +1,419 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="900" viewBox="0 0 1600 900">
-<defs>
-<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#183B56"/></marker>
-<marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2F6BFF"/></marker>
-<marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2FA36B"/></marker>
-<linearGradient id="bluegrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EAF1FF"/><stop offset="1" stop-color="#D9E8FF"/></linearGradient>
-<linearGradient id="heat" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#EDF2F7"/><stop offset="0.35" stop-color="#A9D7D0"/><stop offset="0.7" stop-color="#42A88F"/><stop offset="1" stop-color="#136C64"/></linearGradient>
-</defs>
-<rect width="1600" height="900" fill="white"/>
-<text x="800.0" y="54" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="34" font-weight="700" font-style="normal" text-anchor="middle">方法对比与关键模块消融</text>
-<text x="420" y="120" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">联合成功率 / %</text>
-<text x="200" y="210" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">直接PPO</text>
-<rect x="220" y="180" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
-<rect x="220" y="180" width="213.0" height="44" rx="10" fill="#D9544D" fill-opacity="1.0" stroke="#D9544D" stroke-width="0"/>
-<text x="445.0" y="211" fill="#D9544D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">42.6</text>
-<text x="200" y="300" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">无Teacher</text>
-<rect x="220" y="270" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
-<rect x="220" y="270" width="308.5" height="44" rx="10" fill="#F28E2B" fill-opacity="1.0" stroke="#F28E2B" stroke-width="0"/>
-<text x="540.5" y="301" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">61.7</text>
-<text x="200" y="390" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">纯行为克隆</text>
-<rect x="220" y="360" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
-<rect x="220" y="360" width="369.0" height="44" rx="10" fill="#8064C6" fill-opacity="1.0" stroke="#8064C6" stroke-width="0"/>
-<text x="601.0" y="391" fill="#8064C6" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">73.8</text>
-<text x="200" y="480" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">无DAgger</text>
-<rect x="220" y="450" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
-<rect x="220" y="450" width="390.5" height="44" rx="10" fill="#6F91C7" fill-opacity="1.0" stroke="#6F91C7" stroke-width="0"/>
-<text x="622.5" y="481" fill="#6F91C7" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">78.1</text>
-<text x="200" y="570" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">DAgger</text>
-<rect x="220" y="540" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
-<rect x="220" y="540" width="424.5" height="44" rx="10" fill="#27A7B8" fill-opacity="1.0" stroke="#27A7B8" stroke-width="0"/>
-<text x="656.5" y="571" fill="#27A7B8" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">84.9</text>
-<text x="200" y="660" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">完整方法</text>
-<rect x="220" y="630" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
-<rect x="220" y="630" width="456.5" height="44" rx="10" fill="#2FA36B" fill-opacity="1.0" stroke="#2FA36B" stroke-width="0"/>
-<text x="688.5" y="661" fill="#2FA36B" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">91.3</text>
-<line x1="220" y1="735" x2="720" y2="735" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<line x1="220.0" y1="735" x2="220.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<text x="220.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">0</text>
-<line x1="320.0" y1="735" x2="320.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<text x="320.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">20</text>
-<line x1="420.0" y1="735" x2="420.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<text x="420.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">40</text>
-<line x1="520.0" y1="735" x2="520.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<text x="520.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">60</text>
-<line x1="620.0" y1="735" x2="620.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<text x="620.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">80</text>
-<line x1="720.0" y1="735" x2="720.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<text x="720.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">100</text>
-<text x="1190" y="120" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" font-style="normal" text-anchor="middle">平均目标误差 / m</text>
-<text x="990" y="210" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">完整方法</text>
-<rect x="1010" y="180" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
-<rect x="1010" y="180" width="190.625" height="44" rx="10" fill="#2FA36B" fill-opacity="1.0" stroke="#2FA36B" stroke-width="0"/>
-<text x="1212.625" y="211" fill="#2FA36B" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">0.061</text>
-<text x="990" y="300" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">名义位移标签</text>
-<rect x="1010" y="270" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
-<rect x="1010" y="270" width="253.125" height="44" rx="10" fill="#8064C6" fill-opacity="1.0" stroke="#8064C6" stroke-width="0"/>
-<text x="1275.125" y="301" fill="#8064C6" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">0.081</text>
-<text x="990" y="390" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">无近邻增强</text>
-<rect x="1010" y="360" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
-<rect x="1010" y="360" width="275.0" height="44" rx="10" fill="#27A7B8" fill-opacity="1.0" stroke="#27A7B8" stroke-width="0"/>
-<text x="1297.0" y="391" fill="#27A7B8" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">0.088</text>
-<text x="990" y="480" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">无DAgger</text>
-<rect x="1010" y="450" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
-<rect x="1010" y="450" width="328.125" height="44" rx="10" fill="#6F91C7" fill-opacity="1.0" stroke="#6F91C7" stroke-width="0"/>
-<text x="1350.125" y="481" fill="#6F91C7" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">0.105</text>
-<text x="990" y="570" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">无PPO</text>
-<rect x="1010" y="540" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
-<rect x="1010" y="540" width="362.5" height="44" rx="10" fill="#F28E2B" fill-opacity="1.0" stroke="#F28E2B" stroke-width="0"/>
-<text x="1384.5" y="571" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">0.116</text>
-<text x="990" y="660" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="600" font-style="normal" text-anchor="end">无Teacher</text>
-<rect x="1010" y="630" width="500" height="44" rx="10" fill="#F5F7FA" fill-opacity="1.0" stroke="#F5F7FA" stroke-width="0"/>
-<rect x="1010" y="630" width="428.125" height="44" rx="10" fill="#D9544D" fill-opacity="1.0" stroke="#D9544D" stroke-width="0"/>
-<text x="1450.125" y="661" fill="#D9544D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" font-style="normal" text-anchor="start">0.137</text>
-<line x1="1010" y1="735" x2="1510" y2="735" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<line x1="1010.0" y1="735" x2="1010.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<text x="1010.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">0.00</text>
-<line x1="1135.0" y1="735" x2="1135.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<text x="1135.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">0.04</text>
-<line x1="1260.0" y1="735" x2="1260.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<text x="1260.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">0.08</text>
-<line x1="1385.0" y1="735" x2="1385.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<text x="1385.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">0.12</text>
-<line x1="1510.0" y1="735" x2="1510.0" y2="743" stroke="#18232D" stroke-width="2" stroke-linecap="round"/>
-<text x="1510.0" y="770" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" font-style="normal" text-anchor="middle">0.16</text>
-<line x1="800" y1="120" x2="800" y2="790" stroke="#DDE3EA" stroke-width="2" stroke-linecap="round"/>
-<text x="1570" y="878" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" font-style="normal" text-anchor="end">虚构仿真数据，仅用于论文写作演示</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="590.4pt" height="273.6pt" viewBox="0 0 590.4 273.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 273.6
+L 590.4 273.6
+L 590.4 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 123.984 229.824
+L 325.256727 229.824
+L 325.256727 32.832
+L 123.984 32.832
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 145.395992 229.824
+L 145.395992 32.832
+" clip-path="url(#pd807b31747)" style="fill: none; stroke: #dce1e5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m6a881ca971" d="M 0 0
+L 0 3.5
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m6a881ca971" x="145.395992" y="229.824" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle" x="145.395992" y="244.783375" transform="rotate(-0 145.395992 244.783375)">60</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 188.219977 229.824
+L 188.219977 32.832
+" clip-path="url(#pd807b31747)" style="fill: none; stroke: #dce1e5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m6a881ca971" x="188.219977" y="229.824" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle" x="188.219977" y="244.783375" transform="rotate(-0 188.219977 244.783375)">70</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 231.043961 229.824
+L 231.043961 32.832
+" clip-path="url(#pd807b31747)" style="fill: none; stroke: #dce1e5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m6a881ca971" x="231.043961" y="229.824" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle" x="231.043961" y="244.783375" transform="rotate(-0 231.043961 244.783375)">80</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 273.867946 229.824
+L 273.867946 32.832
+" clip-path="url(#pd807b31747)" style="fill: none; stroke: #dce1e5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m6a881ca971" x="273.867946" y="229.824" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle" x="273.867946" y="244.783375" transform="rotate(-0 273.867946 244.783375)">90</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 316.69193 229.824
+L 316.69193 32.832
+" clip-path="url(#pd807b31747)" style="fill: none; stroke: #dce1e5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m6a881ca971" x="316.69193" y="229.824" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle" x="316.69193" y="244.783375" transform="rotate(-0 316.69193 244.783375)">100</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #252b30" x="224.620364" y="259.14275" transform="rotate(-0 224.620364 259.14275)">联合成功率 (%)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_11"/>
+     <g id="text_7">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: end" x="120.484" y="52.071631" transform="rotate(-0 120.484 52.071631)">完整方法</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_12"/>
+     <g id="text_8">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: end" x="120.484" y="79.816983" transform="rotate(-0 120.484 79.816983)">固定模仿权重</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_13"/>
+     <g id="text_9">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: end" x="120.484" y="107.562335" transform="rotate(-0 120.484 107.562335)">名义参考位移标签</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_14"/>
+     <g id="text_10">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: end" x="120.484" y="135.307687" transform="rotate(-0 120.484 135.307687)">无近邻检索增强</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_15"/>
+     <g id="text_11">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: end" x="120.484" y="162.948352" transform="rotate(-0 120.484 162.948352)">无 DAgger</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_16"/>
+     <g id="text_12">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: end" x="120.484" y="190.798392" transform="rotate(-0 120.484 190.798392)">无 PPO 目标</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_17"/>
+     <g id="text_13">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: end" x="120.484" y="218.543744" transform="rotate(-0 120.484 218.543744)">无 Teacher</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 123.984 229.824
+L 123.984 32.832
+" style="fill: none; stroke: #000000; stroke-width: 0.75; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 123.984 229.824
+L 325.256727 229.824
+" style="fill: none; stroke: #000000; stroke-width: 0.75; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="C0_0_420d258da8" d="M 0 2.645751
+C 0.701661 2.645751 1.374679 2.366978 1.870829 1.870829
+C 2.366978 1.374679 2.645751 0.701661 2.645751 -0
+C 2.645751 -0.701661 2.366978 -1.374679 1.870829 -1.870829
+C 1.374679 -2.366978 0.701661 -2.645751 0 -2.645751
+C -0.701661 -2.645751 -1.374679 -2.366978 -1.870829 -1.870829
+C -2.366978 -1.374679 -2.645751 -0.701661 -2.645751 0
+C -2.645751 0.701661 -2.366978 1.374679 -1.870829 1.870829
+C -1.374679 2.366978 -0.701661 2.645751 0 2.645751
+z
+"/>
+    </defs>
+    <g clip-path="url(#pd807b31747)">
+     <use xlink:href="#C0_0_420d258da8" x="279.435064" y="48.091944" style="fill: #285d7b; stroke: #285d7b"/>
+    </g>
+    <g clip-path="url(#pd807b31747)">
+     <use xlink:href="#C0_0_420d258da8" x="264.446669" y="75.837296" style="fill: #58636d; stroke: #58636d"/>
+    </g>
+    <g clip-path="url(#pd807b31747)">
+     <use xlink:href="#C0_0_420d258da8" x="254.597153" y="103.582648" style="fill: #58636d; stroke: #58636d"/>
+    </g>
+    <g clip-path="url(#pd807b31747)">
+     <use xlink:href="#C0_0_420d258da8" x="246.460596" y="131.328" style="fill: #58636d; stroke: #58636d"/>
+    </g>
+    <g clip-path="url(#pd807b31747)">
+     <use xlink:href="#C0_0_420d258da8" x="222.907404" y="159.073352" style="fill: #58636d; stroke: #58636d"/>
+    </g>
+    <g clip-path="url(#pd807b31747)">
+     <use xlink:href="#C0_0_420d258da8" x="210.488449" y="186.818704" style="fill: #58636d; stroke: #58636d"/>
+    </g>
+    <g clip-path="url(#pd807b31747)">
+     <use xlink:href="#C0_0_420d258da8" x="152.67607" y="214.564056" style="fill: #58636d; stroke: #58636d"/>
+    </g>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="283.717462" y="50.642881" transform="rotate(-0 283.717462 50.642881)">91.3</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="268.729068" y="78.388233" transform="rotate(-0 268.729068 78.388233)">87.8</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="258.879551" y="106.133585" transform="rotate(-0 258.879551 106.133585)">85.5</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="250.742994" y="133.878937" transform="rotate(-0 250.742994 133.878937)">83.6</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="227.189803" y="161.62429" transform="rotate(-0 227.189803 161.62429)">78.1</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="214.770847" y="189.369642" transform="rotate(-0 214.770847 189.369642)">75.2</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="156.958468" y="217.114994" transform="rotate(-0 156.958468 217.114994)">61.7</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="123.984" y="24.832" transform="rotate(-0 123.984 24.832)">(a) 联合成功率</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 365.511273 229.824
+L 566.784 229.824
+L 566.784 32.832
+L 365.511273 32.832
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_6">
+     <g id="line2d_18">
+      <path d="M 391.764237 229.824
+L 391.764237 32.832
+" clip-path="url(#pdc3304bea7)" style="fill: none; stroke: #dce1e5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m6a881ca971" x="391.764237" y="229.824" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle" x="391.764237" y="244.783375" transform="rotate(-0 391.764237 244.783375)">0.06</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_20">
+      <path d="M 444.270166 229.824
+L 444.270166 32.832
+" clip-path="url(#pdc3304bea7)" style="fill: none; stroke: #dce1e5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#m6a881ca971" x="444.270166" y="229.824" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle" x="444.270166" y="244.783375" transform="rotate(-0 444.270166 244.783375)">0.09</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_22">
+      <path d="M 496.776095 229.824
+L 496.776095 32.832
+" clip-path="url(#pdc3304bea7)" style="fill: none; stroke: #dce1e5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#m6a881ca971" x="496.776095" y="229.824" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle" x="496.776095" y="244.783375" transform="rotate(-0 496.776095 244.783375)">0.12</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_24">
+      <path d="M 549.282024 229.824
+L 549.282024 32.832
+" clip-path="url(#pdc3304bea7)" style="fill: none; stroke: #dce1e5; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#m6a881ca971" x="549.282024" y="229.824" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_25">
+      <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle" x="549.282024" y="244.783375" transform="rotate(-0 549.282024 244.783375)">0.15</text>
+     </g>
+    </g>
+    <g id="text_26">
+     <text style="font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #252b30" x="466.147636" y="259.163062" transform="rotate(-0 466.147636 259.163062)">平均目标误差 (m)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_8">
+     <g id="line2d_26"/>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_27"/>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_28"/>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_29"/>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_30"/>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_31"/>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_32"/>
+    </g>
+   </g>
+   <g id="patch_6">
+    <path d="M 365.511273 229.824
+L 365.511273 32.832
+" style="fill: none; stroke: #000000; stroke-width: 0.75; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 365.511273 229.824
+L 566.784 229.824
+" style="fill: none; stroke: #000000; stroke-width: 0.75; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="PathCollection_2">
+    <defs>
+     <path id="C1_0_420d258da8" d="M 0 2.645751
+C 0.701661 2.645751 1.374679 2.366978 1.870829 1.870829
+C 2.366978 1.374679 2.645751 0.701661 2.645751 -0
+C 2.645751 -0.701661 2.366978 -1.374679 1.870829 -1.870829
+C 1.374679 -2.366978 0.701661 -2.645751 0 -2.645751
+C -0.701661 -2.645751 -1.374679 -2.366978 -1.870829 -1.870829
+C -2.366978 -1.374679 -2.645751 -0.701661 -2.645751 0
+C -2.645751 0.701661 -2.366978 1.374679 -1.870829 1.870829
+C -1.374679 2.366978 -0.701661 2.645751 0 2.645751
+z
+"/>
+    </defs>
+    <g clip-path="url(#pdc3304bea7)">
+     <use xlink:href="#C1_0_420d258da8" x="393.514435" y="48.091944" style="fill: #285d7b; stroke: #285d7b"/>
+    </g>
+    <g clip-path="url(#pdc3304bea7)">
+     <use xlink:href="#C1_0_420d258da8" x="414.516806" y="75.837296" style="fill: #58636d; stroke: #58636d"/>
+    </g>
+    <g clip-path="url(#pdc3304bea7)">
+     <use xlink:href="#C1_0_420d258da8" x="428.518387" y="103.582648" style="fill: #58636d; stroke: #58636d"/>
+    </g>
+    <g clip-path="url(#pdc3304bea7)">
+     <use xlink:href="#C1_0_420d258da8" x="440.769771" y="131.328" style="fill: #58636d; stroke: #58636d"/>
+    </g>
+    <g clip-path="url(#pdc3304bea7)">
+     <use xlink:href="#C1_0_420d258da8" x="470.52313" y="159.073352" style="fill: #58636d; stroke: #58636d"/>
+    </g>
+    <g clip-path="url(#pdc3304bea7)">
+     <use xlink:href="#C1_0_420d258da8" x="489.775304" y="186.818704" style="fill: #58636d; stroke: #58636d"/>
+    </g>
+    <g clip-path="url(#pdc3304bea7)">
+     <use xlink:href="#C1_0_420d258da8" x="526.529455" y="214.564056" style="fill: #58636d; stroke: #58636d"/>
+    </g>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="398.765028" y="50.642881" transform="rotate(-0 398.765028 50.642881)">0.061</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="419.767399" y="78.388233" transform="rotate(-0 419.767399 78.388233)">0.073</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="433.76898" y="106.133585" transform="rotate(-0 433.76898 106.133585)">0.081</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="446.020364" y="133.878937" transform="rotate(-0 446.020364 133.878937)">0.088</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="475.773723" y="161.62429" transform="rotate(-0 475.773723 161.62429)">0.105</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="495.025897" y="189.369642" transform="rotate(-0 495.025897 189.369642)">0.116</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="531.780047" y="217.114994" transform="rotate(-0 531.780047 217.114994)">0.137</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="365.511273" y="24.832" transform="rotate(-0 365.511273 24.832)">(b) 平均目标误差</text>
+   </g>
+  </g>
+  <g id="text_35">
+   <text style="font-size: 8px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: end; fill: #58636d" x="584.496" y="270.3168" transform="rotate(-0 584.496 270.3168)">合成演示数据 · 论文表 8</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd807b31747">
+   <rect x="123.984" y="32.832" width="201.272727" height="196.992"/>
+  </clipPath>
+  <clipPath id="pdc3304bea7">
+   <rect x="365.511273" y="32.832" width="201.272727" height="196.992"/>
+  </clipPath>
+ </defs>
 </svg>

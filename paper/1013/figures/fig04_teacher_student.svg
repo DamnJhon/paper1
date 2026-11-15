@@ -1,80 +1,471 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="900" viewBox="0 0 1600 900">
-<defs>
-<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#183B56"/></marker>
-<marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2F6BFF"/></marker>
-<marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2FA36B"/></marker>
-<linearGradient id="bluegrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EAF1FF"/><stop offset="1" stop-color="#D9E8FF"/></linearGradient>
-<linearGradient id="heat" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#EDF2F7"/><stop offset="0.35" stop-color="#A9D7D0"/><stop offset="0.7" stop-color="#42A88F"/><stop offset="1" stop-color="#136C64"/></linearGradient>
-</defs>
-<rect width="1600" height="900" fill="white"/>
-<text x="800.0" y="54" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="34" font-weight="700" font-style="normal" text-anchor="middle">Teacher–Student信息接口与DAgger-PPO联合优化</text>
-<rect x="50" y="120" width="610" height="650" rx="24" fill="#FFF1E2" fill-opacity="1.0" stroke="#F28E2B" stroke-width="3"/>
-<text x="355" y="175" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" font-style="normal" text-anchor="middle">Teacher（训练时专家）</text>
-<rect x="90" y="225" width="230" height="50" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#F28E2B" stroke-width="2"/>
-<text x="205" y="258" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="middle">仿真完整状态 sₜ</text>
-<line x1="320" y1="250" x2="390" y2="390" stroke="#F28E2B" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow)"/>
-<rect x="90" y="297" width="230" height="50" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#F28E2B" stroke-width="2"/>
-<text x="205" y="330" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="middle">动作相位 φₜ</text>
-<line x1="320" y1="322" x2="390" y2="390" stroke="#F28E2B" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow)"/>
-<rect x="90" y="369" width="230" height="50" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#F28E2B" stroke-width="2"/>
-<text x="205" y="402" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="middle">短时未来参考 rₜ</text>
-<line x1="320" y1="394" x2="390" y2="390" stroke="#F28E2B" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow)"/>
-<rect x="90" y="441" width="230" height="50" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#F28E2B" stroke-width="2"/>
-<text x="205" y="474" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="middle">参考足端与接触</text>
-<line x1="320" y1="466" x2="390" y2="390" stroke="#F28E2B" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow)"/>
-<circle cx="455" cy="390" r="84" fill="#FFFFFF" fill-opacity="1.0" stroke="#F28E2B" stroke-width="4"/>
-<text x="455" y="380" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" text-anchor="middle">
-<tspan x="455" dy="0">Teacher</tspan>
-<tspan x="455" dy="32.5">π_E</tspan>
-</text>
-<line x1="455" y1="478" x2="455" y2="540" stroke="#F28E2B" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
-<rect x="335" y="550" width="240" height="62" rx="15" fill="#FFFFFF" fill-opacity="1.0" stroke="#F28E2B" stroke-width="2"/>
-<text x="455" y="590" fill="#F28E2B" font-family="Noto Sans CJK SC, sans-serif" font-size="24" font-weight="700" font-style="normal" text-anchor="middle">专家动作 aₜᴱ</text>
-<text x="355" y="690" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="400" font-style="normal" text-anchor="middle">作用：把运动学参考转换为</text>
-<text x="355" y="720" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="400" font-style="normal" text-anchor="middle">满足动力学与接触约束的控制行为</text>
-<rect x="940" y="120" width="610" height="650" rx="24" fill="#E8F6F1" fill-opacity="1.0" stroke="#178C7B" stroke-width="3"/>
-<text x="1245" y="175" fill="#178C7B" font-family="Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" font-style="normal" text-anchor="middle">Student（部署策略）</text>
-<rect x="980" y="225" width="230" height="50" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#178C7B" stroke-width="2"/>
-<text x="1095" y="258" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="middle">本体观测 oₜ</text>
-<line x1="1210" y1="250" x2="1280" y2="390" stroke="#178C7B" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-green)"/>
-<rect x="980" y="297" width="230" height="50" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#178C7B" stroke-width="2"/>
-<text x="1095" y="330" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="middle">二维目标位移 g</text>
-<line x1="1210" y1="322" x2="1280" y2="390" stroke="#178C7B" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-green)"/>
-<rect x="980" y="369" width="230" height="50" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#178C7B" stroke-width="2"/>
-<text x="1095" y="402" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="middle">跳跃触发 zₜ</text>
-<line x1="1210" y1="394" x2="1280" y2="390" stroke="#178C7B" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-green)"/>
-<rect x="980" y="441" width="230" height="50" rx="12" fill="#FFFFFF" fill-opacity="1.0" stroke="#178C7B" stroke-width="2"/>
-<text x="1095" y="474" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" font-style="normal" text-anchor="middle">上一时刻动作</text>
-<line x1="1210" y1="466" x2="1280" y2="390" stroke="#178C7B" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-green)"/>
-<circle cx="1345" cy="390" r="84" fill="#FFFFFF" fill-opacity="1.0" stroke="#178C7B" stroke-width="4"/>
-<text x="1345" y="380" fill="#178C7B" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" text-anchor="middle">
-<tspan x="1345" dy="0">Student</tspan>
-<tspan x="1345" dy="32.5">π_S</tspan>
-</text>
-<line x1="1345" y1="478" x2="1345" y2="540" stroke="#178C7B" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-green)"/>
-<rect x="1225" y="550" width="240" height="62" rx="15" fill="#FFFFFF" fill-opacity="1.0" stroke="#178C7B" stroke-width="2"/>
-<text x="1345" y="590" fill="#178C7B" font-family="Noto Sans CJK SC, sans-serif" font-size="24" font-weight="700" font-style="normal" text-anchor="middle">关节动作 aₜ</text>
-<text x="1245" y="690" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="400" font-style="normal" text-anchor="middle">部署时不输入相位、未来姿态</text>
-<text x="1245" y="720" fill="#607080" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="400" font-style="normal" text-anchor="middle">或在线检索得到的参考运动</text>
-<rect x="700" y="175" width="200" height="115" rx="18" fill="#F0ECFA" fill-opacity="1.0" stroke="#8064C6" stroke-width="3"/>
-<text x="800" y="218" fill="#8064C6" font-family="Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" text-anchor="middle">
-<tspan x="800" dy="0">实际位移</tspan>
-<tspan x="800" dy="31.05">重标注 g</tspan>
-</text>
-<line x1="660" y1="235" x2="690" y2="235" stroke="#8064C6" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
-<line x1="900" y1="235" x2="930" y2="235" stroke="#8064C6" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
-<rect x="690" y="345" width="220" height="150" rx="18" fill="#FFFFFF" fill-opacity="1.0" stroke="#183B56" stroke-width="3"/>
-<text x="800" y="390" fill="#18232D" font-family="Noto Sans CJK SC, sans-serif" font-size="21" font-weight="650" text-anchor="middle">
-<tspan x="800" dy="0">Student访问状态</tspan>
-<tspan x="800" dy="30.45">查询Teacher动作</tspan>
-<tspan x="800" dy="30.45">聚合DAgger数据</tspan>
-</text>
-<path d="M 940 420 C 905 420, 900 420, 910 420" fill="none" stroke="#183B56" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="1.0" marker-end="url(#arrow)"/>
-<path d="M 690 455 C 665 500, 660 535, 700 585" fill="none" stroke="#183B56" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="1.0" marker-end="url(#arrow)"/>
-<rect x="680" y="570" width="240" height="115" rx="18" fill="#F8FAFC" fill-opacity="1.0" stroke="#183B56" stroke-width="3"/>
-<text x="800" y="610" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" text-anchor="middle">
-<tspan x="800" dy="0">L = (1−α)L_PPO</tspan>
-<tspan x="800" dy="32.199999999999996">+ αL_act</tspan>
-</text>
-<text x="800" y="825" fill="#183B56" font-family="Noto Sans CJK SC, sans-serif" font-size="25" font-weight="650" font-style="normal" text-anchor="middle">DAgger覆盖Student偏离专家后的状态；PPO直接优化目标到达与落地恢复</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="604.8pt" height="334.8pt" viewBox="0 0 604.8 334.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 334.8
+L 604.8 334.8
+L 604.8 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 16.716672 228.759709
+L 588.083328 228.759709
+L 588.083328 12.539782
+L 16.716672 12.539782
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #f7f9fa; stroke: #d5dde3; stroke-width: 0.65; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 16.716672 322.260218
+L 588.083328 322.260218
+L 588.083328 240.447273
+L 16.716672 240.447273
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #f3f7fa; stroke: #d5dde3; stroke-width: 0.65; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 34.207488 88.508945
+L 150.812928 88.508945
+L 150.812928 47.602473
+L 34.207488 47.602473
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #ffffff; stroke: #252b30; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 179.964288 88.508945
+L 267.418368 88.508945
+L 267.418368 47.602473
+L 179.964288 47.602473
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #f8efea; stroke: #9d5138; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 302.4 88.508945
+L 424.835712 88.508945
+L 424.835712 47.602473
+L 302.4 47.602473
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #edf4f8; stroke: #285d7b; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 459.817344 88.508945
+L 570.592512 88.508945
+L 570.592512 47.602473
+L 459.817344 47.602473
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #ffffff; stroke: #252b30; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 150.812928 68.055709
+Q 165.388608 68.055709 178.846254 68.055709
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #9d5138; stroke-linecap: round"/>
+    <path d="M 174.846254 66.055709
+L 178.846254 68.055709
+L 174.846254 70.055709
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #9d5138; stroke: #9d5138; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 267.418368 68.055709
+Q 284.909184 68.055709 301.281966 68.055709
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #9d5138; stroke-linecap: round"/>
+    <path d="M 297.281966 66.055709
+L 301.281966 68.055709
+L 297.281966 70.055709
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #9d5138; stroke: #9d5138; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 424.835712 68.055709
+Q 442.326528 68.055709 458.69931 68.055709
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #285d7b; stroke-linecap: round"/>
+    <path d="M 454.69931 66.055709
+L 458.69931 68.055709
+L 454.69931 70.055709
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #285d7b; stroke: #285d7b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 104.170752 164.478109
+L 319.890816 164.478109
+L 319.890816 123.571636
+L 104.170752 123.571636
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #f8efea; stroke: #9d5138; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 354.872448 164.478109
+L 570.592512 164.478109
+L 570.592512 123.571636
+L 354.872448 123.571636
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #edf4f8; stroke: #285d7b; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 212.030784 108.377804
+Q 212.030784 115.97472 212.030784 122.453602
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #9d5138; stroke-linecap: round"/>
+    <path d="M 214.030784 118.453602
+L 212.030784 122.453602
+L 210.030784 118.453602
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #9d5138; stroke: #9d5138; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 529.780608 88.508945
+Q 529.780608 106.040291 529.780608 122.453602
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #285d7b; stroke-linecap: round"/>
+    <path d="M 531.780608 118.453602
+L 529.780608 122.453602
+L 527.780608 118.453602
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #285d7b; stroke: #285d7b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 104.170752 219.994036
+L 570.592512 219.994036
+L 570.592512 184.931345
+L 104.170752 184.931345
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #edf4f8; stroke: #285d7b; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 212.030784 164.478109
+Q 212.030784 174.704727 212.030784 183.813311
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #9d5138; stroke-linecap: round"/>
+    <path d="M 214.030784 179.813311
+L 212.030784 183.813311
+L 210.030784 179.813311
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #9d5138; stroke: #9d5138; stroke-linecap: round"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 462.73248 164.478109
+Q 462.73248 174.704727 462.73248 183.813311
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #285d7b; stroke-linecap: round"/>
+    <path d="M 464.73248 179.813311
+L 462.73248 183.813311
+L 460.73248 179.813311
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #285d7b; stroke: #285d7b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 319.890816 96.105862
+Q 319.890816 92.307404 319.890816 89.626979
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #285d7b; stroke-linecap: round"/>
+    <path d="M 317.890816 93.626979
+L 319.890816 89.626979
+L 321.890816 93.626979
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #285d7b; stroke: #285d7b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 34.207488 301.806982
+L 209.115648 301.806982
+L 209.115648 266.744291
+L 34.207488 266.744291
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #ffffff; stroke: #252b30; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 302.4 301.806982
+L 424.835712 301.806982
+L 424.835712 266.744291
+L 302.4 266.744291
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #edf4f8; stroke: #285d7b; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 459.817344 301.806982
+L 570.592512 301.806982
+L 570.592512 266.744291
+L 459.817344 266.744291
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #ffffff; stroke: #252b30; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 363.617856 219.994036
+Q 363.617856 243.369164 363.617856 265.626257
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #285d7b; stroke-linecap: round"/>
+    <path d="M 365.617856 261.626257
+L 363.617856 265.626257
+L 361.617856 261.626257
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #285d7b; stroke: #285d7b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 209.115648 284.275636
+Q 255.757824 284.275636 301.281966 284.275636
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #285d7b; stroke-linecap: round"/>
+    <path d="M 297.281966 282.275636
+L 301.281966 284.275636
+L 297.281966 286.275636
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #285d7b; stroke: #285d7b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 424.835712 284.275636
+Q 442.326528 284.275636 458.69931 284.275636
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #285d7b; stroke-linecap: round"/>
+    <path d="M 454.69931 282.275636
+L 458.69931 284.275636
+L 454.69931 286.275636
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #285d7b; stroke: #285d7b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 121.661568 316.416436
+Q 121.661568 309.111709 121.661568 302.925016
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #58636d; stroke-linecap: round"/>
+    <path d="M 119.661568 306.925016
+L 121.661568 302.925016
+L 123.661568 306.925016
+z
+" clip-path="url(#p39b5aa178c)" style="fill: #58636d; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #58636d; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 477.30816 88.508945
+L 477.30816 108.377804
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #9d5138; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 477.30816 108.377804
+L 212.030784 108.377804
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #9d5138; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 104.170752 202.462691
+L 57.528576 202.462691
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #285d7b; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 57.528576 202.462691
+L 57.528576 96.105862
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #285d7b; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 57.528576 96.105862
+L 319.890816 96.105862
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke: #285d7b; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 515.204928 301.806982
+L 515.204928 316.416436
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #58636d"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 515.204928 316.416436
+L 121.661568 316.416436
+" clip-path="url(#p39b5aa178c)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #58636d"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="34.207488" y="32.804913" transform="rotate(-0 34.207488 32.804913)">(a) Student 训练</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #252b30" x="34.207488" y="256.574179" transform="rotate(-0 34.207488 256.574179)">(b) 仿真闭环执行</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 500; font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #252b30" x="92.510208" y="62.335662" transform="rotate(-0 92.510208 62.335662)">重标注专家数据</text>
+   </g>
+   <g id="text_4">
+    <!-- $D_E$ -->
+    <g style="fill: #252b30" transform="translate(86.930208 78.787941)">
+     <text>
+      <tspan x="0" y="-0.4375" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">D</tspan>
+      <tspan x="6.930176" y="1.039062" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">E</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 500; font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #9d5138" x="223.691328" y="70.926022" transform="rotate(-0 223.691328 70.926022)">BC 初始化</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 500; font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #285d7b" x="363.617856" y="62.335662" transform="rotate(-0 363.617856 62.335662)">Student</text>
+   </g>
+   <g id="text_7">
+    <!-- $\pi_S(a_t\mid o_t,g,z_t)$ -->
+    <g style="fill: #252b30" transform="translate(331.847856 78.787941)">
+     <text>
+      <tspan x="0" y="-0.0625" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">π</tspan>
+      <tspan x="13.174805" y="-0.0625" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">a</tspan>
+      <tspan x="29.413037" y="-0.0625" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">o</tspan>
+      <tspan x="42.249902" y="-0.0625" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">g</tspan>
+      <tspan x="52.577051" y="-0.0625" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">z</tspan>
+      <tspan x="5.418457" y="1.414062" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">S</tspan>
+      <tspan x="18.689941" y="1.414062" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">t</tspan>
+      <tspan x="34.919385" y="1.414062" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">t</tspan>
+      <tspan x="57.301172" y="1.414062" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">t</tspan>
+      <tspan x="9.663574" y="-0.0625" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">(</tspan>
+      <tspan x="23.159619" y="-0.0625" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">∣</tspan>
+      <tspan x="37.635645" y="-0.0625" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">,</tspan>
+      <tspan x="47.962793" y="-0.0625" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">,</tspan>
+      <tspan x="60.017432" y="-0.0625" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">)</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 500; font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #252b30" x="515.204928" y="62.310662" transform="rotate(-0 515.204928 62.310662)">G1 / PhysX</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #252b30" x="515.204928" y="78.787941" transform="rotate(-0 515.204928 78.787941)">采集 Student 轨迹</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 500; font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #9d5138" x="212.030784" y="138.439201" transform="rotate(-0 212.030784 138.439201)">DAgger 专家监督</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #252b30" x="212.030784" y="154.757105" transform="rotate(-0 212.030784 154.757105)">查询冻结 Teacher，聚合专家标签</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 500; font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #285d7b" x="462.73248" y="138.304826" transform="rotate(-0 462.73248 138.304826)">PPO 任务优化</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #252b30" x="462.73248" y="154.757105" transform="rotate(-0 462.73248 154.757105)">使用交互样本与任务回报</text>
+   </g>
+   <g id="text_14">
+    <!-- 访问状态与对应参考 $(s_t,r_t)$ -->
+    <g style="fill: #9d5138" transform="translate(364.935168 105.163724)">
+     <text>
+      <tspan x="0" y="-0.890625" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">访</tspan>
+      <tspan x="7.999985" y="-0.890625" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">问</tspan>
+      <tspan x="15.999969" y="-0.890625" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">状</tspan>
+      <tspan x="23.999954" y="-0.890625" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">态</tspan>
+      <tspan x="31.999939" y="-0.890625" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">与</tspan>
+      <tspan x="39.999924" y="-0.890625" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">对</tspan>
+      <tspan x="47.999908" y="-0.890625" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">应</tspan>
+      <tspan x="55.999893" y="-0.890625" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">参</tspan>
+      <tspan x="63.999878" y="-0.890625" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #9d5138">考</tspan>
+      <tspan x="71.999863" y="-0.890625" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #9d5138"> </tspan>
+      <tspan x="73.791855" y="-0.890625" style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #9d5138">(</tspan>
+      <tspan x="83.49537" y="-0.890625" style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #9d5138">,</tspan>
+      <tspan x="93.300449" y="-0.890625" style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #9d5138">)</tspan>
+      <tspan x="76.912949" y="-0.890625" style="font-style: oblique; font-size: 8px; font-family: 'DejaVu Sans'; fill: #9d5138">s</tspan>
+      <tspan x="87.596933" y="-0.890625" style="font-style: oblique; font-size: 8px; font-family: 'DejaVu Sans'; fill: #9d5138">r</tspan>
+      <tspan x="81.080917" y="0.421875" style="font-style: oblique; font-size: 5.6px; font-family: 'DejaVu Sans'; fill: #9d5138">t</tspan>
+      <tspan x="90.885995" y="0.421875" style="font-style: oblique; font-size: 5.6px; font-family: 'DejaVu Sans'; fill: #9d5138">t</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 500; font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #285d7b" x="337.381632" y="197.969838" transform="rotate(-0 337.381632 197.969838)">联合更新</text>
+   </g>
+   <g id="text_16">
+    <!-- $L_k=(1-\alpha_k)L_{\mathrm{PPO}}+\alpha_kL_{\mathrm{act}}$ -->
+    <g style="fill: #252b30" transform="translate(283.696632 212.026167)">
+     <text>
+      <tspan x="0" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">L</tspan>
+      <tspan x="40.241602" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">α</tspan>
+      <tspan x="53.579883" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">L</tspan>
+      <tspan x="82.444922" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">α</tspan>
+      <tspan x="92.271973" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">L</tspan>
+      <tspan x="5.01416" y="1.304688" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">k</tspan>
+      <tspan x="46.174219" y="1.304688" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">k</tspan>
+      <tspan x="88.377539" y="1.304688" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">k</tspan>
+      <tspan x="10.662012" y="-0.171875" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">=</tspan>
+      <tspan x="19.956445" y="-0.171875" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">(</tspan>
+      <tspan x="23.467676" y="-0.171875" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">1</tspan>
+      <tspan x="30.947168" y="-0.171875" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">−</tspan>
+      <tspan x="50.068652" y="-0.171875" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">)</tspan>
+      <tspan x="73.150488" y="-0.171875" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">+</tspan>
+      <tspan x="58.594043" y="1.304688" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">P</tspan>
+      <tspan x="62.393115" y="1.304688" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">P</tspan>
+      <tspan x="66.192188" y="1.304688" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">O</tspan>
+      <tspan x="97.286133" y="1.304688" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">a</tspan>
+      <tspan x="101.146729" y="1.304688" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">c</tspan>
+      <tspan x="104.610498" y="1.304688" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">t</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; fill: #285d7b" transform="translate(63.358848 167.852641)">更新</text>
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; fill: #285d7b" transform="translate(63.358848 177.326141)">策略</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 500; font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #252b30" x="121.661568" y="279.782784" transform="rotate(-0 121.661568 279.782784)">执行输入</text>
+   </g>
+   <g id="text_19">
+    <!-- $o_t,\ g,\ z_t$（96 维） -->
+    <g style="fill: #252b30" transform="translate(83.906568 294.041612)">
+     <text>
+      <tspan x="0" y="-0.96875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">o</tspan>
+      <tspan x="15.759199" y="-0.96875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">g</tspan>
+      <tspan x="29.008682" y="-0.96875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">z</tspan>
+      <tspan x="5.506348" y="0.507812" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">t</tspan>
+      <tspan x="33.732803" y="0.507812" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">t</tspan>
+      <tspan x="8.222607" y="-0.96875" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">,</tspan>
+      <tspan x="21.47209" y="-0.96875" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">,</tspan>
+      <tspan x="36.449063" y="-0.96875" style="font-size: 9px; font-family: 'Noto Sans CJK JP'; fill: #252b30">（</tspan>
+      <tspan x="45.449063" y="-0.96875" style="font-size: 9px; font-family: 'Noto Sans CJK JP'; fill: #252b30">9</tspan>
+      <tspan x="50.444058" y="-0.96875" style="font-size: 9px; font-family: 'Noto Sans CJK JP'; fill: #252b30">6</tspan>
+      <tspan x="55.439053" y="-0.96875" style="font-size: 9px; font-family: 'Noto Sans CJK JP'; fill: #252b30"> </tspan>
+      <tspan x="57.455044" y="-0.96875" style="font-size: 9px; font-family: 'Noto Sans CJK JP'; fill: #252b30">维</tspan>
+      <tspan x="66.455044" y="-0.96875" style="font-size: 9px; font-family: 'Noto Sans CJK JP'; fill: #252b30">）</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 500; font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #285d7b" x="363.617856" y="279.782784" transform="rotate(-0 363.617856 279.782784)">固定 Student</text>
+   </g>
+   <g id="text_21">
+    <!-- $\pi_S^*$ -->
+    <g style="fill: #252b30" transform="translate(357.767856 294.078175)">
+     <text>
+      <tspan x="0" y="-0.873438" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #252b30">π</tspan>
+      <tspan x="7.047803" y="-4.31875" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">*</tspan>
+      <tspan x="5.418457" y="1.5875" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #252b30">S</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_22">
+    <text style="font-weight: 500; font-size: 10px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #252b30" x="515.204928" y="279.757784" transform="rotate(-0 515.204928 279.757784)">G1 / PhysX</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: middle; fill: #252b30" x="515.204928" y="293.839112" transform="rotate(-0 515.204928 293.839112)">29 维关节位置目标</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK JP', 'DejaVu Sans'; text-anchor: start; fill: #285d7b" x="374.695373" y="238.624125" transform="rotate(-0 374.695373 238.624125)">导出策略</text>
+   </g>
+   <g id="text_25">
+    <!-- 本体观测 $o_{t+1}$ -->
+    <g style="fill: #58636d" transform="translate(292.633248 314.371113)">
+     <text>
+      <tspan x="0" y="-0.96875" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #58636d">本</tspan>
+      <tspan x="7.999985" y="-0.96875" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #58636d">体</tspan>
+      <tspan x="15.999969" y="-0.96875" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #58636d">观</tspan>
+      <tspan x="23.999954" y="-0.96875" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #58636d">测</tspan>
+      <tspan x="31.999939" y="-0.96875" style="font-size: 8px; font-family: 'Noto Sans CJK JP'; fill: #58636d"> </tspan>
+      <tspan x="33.791931" y="-0.96875" style="font-style: oblique; font-size: 8px; font-family: 'DejaVu Sans'; fill: #58636d">o</tspan>
+      <tspan x="38.686462" y="0.34375" style="font-style: oblique; font-size: 5.6px; font-family: 'DejaVu Sans'; fill: #58636d">t</tspan>
+      <tspan x="41.973181" y="0.34375" style="font-size: 5.6px; font-family: 'DejaVu Sans'; fill: #58636d">+</tspan>
+      <tspan x="47.756384" y="0.34375" style="font-size: 5.6px; font-family: 'DejaVu Sans'; fill: #58636d">1</tspan>
+     </text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p39b5aa178c">
+   <rect x="10.8864" y="6.696" width="583.0272" height="321.408"/>
+  </clipPath>
+ </defs>
 </svg>

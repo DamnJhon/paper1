@@ -16,12 +16,30 @@
 | 图10 | `fig10_error_cdf` | 目标位移误差累计分布 | 5.7容差敏感性 |
 | 图11 | `fig11_robustness` | 动力学随机化与控制延迟下的鲁棒性 | 5.8鲁棒性实验 |
 
+## 新增流程图与概览图
+
+`overview/` 目录包含两张基于最新论文正文重新整理的补充视觉稿：
+
+- `method_training_flow`：详细展示参考族构建、Teacher、实际位移重标注、DAgger-PPO闭环与部署接口，适合方法章节或答辩讲解。
+- `graphical_abstract`：将任务定义、四阶段训练、部署接口、动作阶段、联合成功判据和论文主要合成数字集中在一页，适合首页概览或答辩开场。
+- `fig01_overall_framework_v2`：面向正式论文主图的图像主导版本。参考机器人学习论文常见的“动作画面 + 少量算法信息流”构图，弱化外框、公式和长文本，突出参考族、Teacher物理执行、实际位移重标注、Student蒸馏及目标条件部署。
+
+两张图均提供SVG、PNG和PDF格式。图形摘要复用了`fig05_jump_sequence_raw.png`中的AI生成机器人动作示意；图中的性能数字仍属于论文声明的合成演示数据。
+
+重新生成：
+
+```bash
+python 1013/figures/generate_overview_figures.py
+python 1013/figures/generate_paper_style_framework.py
+```
+
 ## 格式
 
 - 根目录下的 `.svg`：可编辑矢量源图。
 - `png/`：1600×900左右的预览和Markdown插图。
 - `pdf/`：论文排版用矢量PDF。
-- `generate_figures.py`：除图5三维机器人原图外的全部生成代码。
+- `refine_paper_figures.py`：图2–4及图6–11的当前绘图脚本，一次导出SVG、PNG和PDF。
+- `generate_figures.py`：初稿生成脚本，用于图1与图5。全量运行会重新生成旧版SVG。
 
 ## 图5说明
 
@@ -33,8 +51,8 @@
 
 ## 数据声明
 
-图6—图11由当前论文中的虚构数据和补充的演示性数据生成，图内已经标注“虚构仿真数据”。导入真实评测结果后，需要同步修改 `generate_figures.py` 中的数据并重新运行：
+图6—图11使用论文中的虚构数据和补充演示数据。图9(a)–(c)为公式生成的示意曲线。图10(a)使用表4的汇总值构造误差CDF，图10(b)使用表9的联合成功率。导入真实评测结果后，可更新绘图脚本中的数据并重新生成。脚本需要 NumPy、Matplotlib 和 Noto Sans CJK 字体。
 
 ```bash
-python 1013/figures/generate_figures.py
+python 1013/figures/refine_paper_figures.py
 ```
